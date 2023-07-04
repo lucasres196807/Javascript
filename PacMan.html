@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Meu primeiro programa</title>
+	<style>
+		canvas{
+			display: inline-block;
+			margin: 20px;
+			border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<!-- PacMan Imagem -->
+	<canvas id="tela" width="600" height="400"></canvas>
+	<script>
+		var tela = document.getElementById("tela");
+		var t = tela.getContext("2d");
+
+		t.fillStyle="#FFF01F";//Amarelo
+		t.beginPath();
+		t.arc(300,200,50,Math.PI - 0.5, 2 * Math.PI - 0.5);
+		t.fill();
+		t.beginPath();
+		t.arc(300,200,50,0.5, Math.PI + 0.5);
+		t.fill();
+		t.fillStyle="black";
+		t.beginPath();
+		t.arc(310,180,6,0,2*Math.PI);
+		t.fill();
+	</script>
+</body>
+</html>
+
+<!-- https://groups.google.com/group/comece-a-programar/ -->
