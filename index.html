@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Meu primeiro programa</title>
+	<style>
+		canvas{
+			display: inline-block;
+			margin: 20px;
+			border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="tela" width="600" height="400"></canvas>
+	<canvas id="colombia" width="600" height="400"></canvas>
+	<canvas id="madagascar" width="600" height="300"></canvas>
+	<canvas id="Laos" width="600" height="350"></canvas>
+	<canvas id="Niger" width="600" height="400"></canvas>
+	<canvas id="noruega" width="600" height="400"></canvas>
+	<canvas id="brasil" width="600" height="400"></canvas>
+	<script>
+		var tela = document.getElementById("tela");
+		var c = tela.getContext("2d");
+		c.fillStyle="green";	
+		c.fillRect(0,0,200,400);
+		c.fillStyle="red";
+		c.fillRect(400,0,200,400);
+		c.fillStyle="gray";
+		c.beginPath();
+		c.moveTo(300,200);
+		c.lineTo(200,400);
+		c.lineTo(400,400);
+		c.fill();
+		c.fillStyle="blue";
+		c.beginPath();
+		c.arc(300,200,50,0, 2*Math.PI);
+		c.fill();
+		//Bandeira da Comlobia
+		var comlobia = document.getElementById("colombia");
+		var com = comlobia.getContext("2d");
+		com.fillStyle="yellow";
+		com.fillRect(0,0,600,150);
+		com.fillStyle="blue";
+		com.fillRect(0,150,600,150);
+		com.fillStyle="red";
+		com.fillRect(0,250,600,150);
+		//bandeira do madagascar
+		var mada = document.getElementById("madagascar");
+		var m = mada.getContext("2d");
+		m.fillStyle = "rgba(220,220,220,255)";
+		m.fillRect(0,0,150, 300);
+		m.fillStyle="red";
+		m.fillRect(150,0,500,150);
+		m.fillStyle="green";
+		m.fillRect(150,150,450,150);
+		//bandeira do Laos 
+		var Laos = document.getElementById("Laos");
+		var l = Laos.getContext("2d");
+		l.fillStyle="red";
+		l.fillRect(0,0,600,100);
+		l.fillStyle="blue";
+		l.fillRect(0,100,600,150);
+		l.fillStyle="white";
+		l.beginPath();
+		l.arc(300,180,50,0,2*Math.PI);
+		l.fill();
+		l.fillStyle="red";
+		l.fillRect(0,250,600,100);
+		//Bandeira da Niger 
+		var orange = document.getElementById("Niger");
+		var o = orange.getContext("2d");
+		o.fillStyle="orange";
+		o.fillRect(0,0,600,150);
+		o.fillStyle="white";
+		o.fillRect(0,150,600,150);
+		o.fillStyle="orange";
+		o.beginPath();
+		o.arc(300,230,50,0,2*Math.PI);
+		o.fill();
+		o.fillStyle="green";
+		o.fillRect(0,300,600,150);
+		//bandeira da Noruega 
+		var noruega = document.getElementById("noruega");
+		var n = noruega.getContext("2d");
+		n.fillStyle="#EF2B2D";
+		n.fillRect(0,0,600,400);
+		n.fillStyle="#FFFFFF";
+		n.fillRect(0,100,600,200);
+		n.fillRect(100,0,200,400);
+		n.fillStyle="#002868";
+		n.fillRect(130,0,130,400);
+		n.fillRect(0,160,600,100);
+		//bandeira do brasil 
+		var brasil = document.getElementById("brasil");
+		var b = brasil.getContext("2d");
+		b.fillStyle="#009B3A";//Verde
+		b.fillRect(0,0,600,400);
+		b.fillStyle="#FFD500";//Amarelo
+		b.beginPath();
+		b.moveTo(300,0);
+		b.lineTo(600,200);
+		b.lineTo(300,400);
+		b.lineTo(0,200);
+		b.fill();
+		b.fillStyle="#002395";
+		b.beginPath();
+		b.arc(300,200,90,0,2*Math.PI);
+		b.fill();
+	</script>
+</body>
+</html>
+
+<!-- https://groups.google.com/group/comece-a-programar/ -->
