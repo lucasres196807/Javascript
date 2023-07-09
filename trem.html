@@ -1,0 +1,59 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Meu primeiro programa</title>
+	<style>
+		canvas{
+			display: inline-block;
+			margin: 20px;
+			border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="tela" width="600" height="400"></canvas>
+	<script>
+		var desenhaQuadro = function(x,y){
+			var tela = document.getElementById("tela");
+			var t = tela.getContext("2d");
+			t.fillStyle="red";
+			t.fillRect(x,y,50,50);
+			t.fillStyle="black";
+			t.strokeRect(x,y,50,50);
+			}
+		var desenhaVermelho = function(x,y){
+			var tela = document.getElementById("tela");
+			var t = tela.getContext("2d");
+			t.fillStyle="blue";
+			t.fillRect(x,y,50,50);
+			t.fillStyle="black";
+			t.strokeRect(x,y,50,50);
+		}
+		var circulo = function(x,y){
+			var tela = document.getElementById("tela");
+			var t = tela.getContext("2d");
+			//dados do circulos
+			var tamanhoQuadrado = 50;
+			var metadeQuadrado = tamanhoQuadrado /2;
+			var posicaoX = x+metadeQuadrado;
+			//diminuir o Y
+			var posicaoY_num = tamanhoQuadrado -20;
+			var posicaoY = y+metadeQuadrado+posicaoY_num;
+			//dados do circulos
+			t.fillStyle="yellow";
+			t.beginPath();
+			t.arc(posicaoX,posicaoY, 25,0, 2*Math.PI);
+			t.fill();
+		}
+			for(var i =0; i < 600; i+=50){
+				desenhaQuadro(i,0);
+				desenhaVermelho(i,50);
+				circulo(i,50);
+			}
+	</script>
+</body>
+</html>
+
+<!-- https://groups.google.com/group/comece-a-programar/ -->
