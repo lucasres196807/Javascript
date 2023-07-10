@@ -1,0 +1,47 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Meu primeiro programa</title>
+	<style>
+		canvas{
+			display: inline-block;
+			margin: 20px;
+			border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="tela" width="600" height="400"></canvas>
+	<script>
+		var tela = document.getElementById("tela");
+		var t = tela.getContext("2d");
+		var corEscolhida = prompt("Digite uma cor:");
+		t.fillStyle="gray";
+		t.fillRect(0,0,600,400);
+		t.fill();
+		tela.onclick = function(evento){
+			//se a cor de fundo for igual a cor de escolha
+			if(corEscolhida === "gray"){
+				t.fillStyle="blue";
+				t.fillRect(0,0,600,400);
+				t.fill();
+			}
+			return desenhaCirculo(evento);
+		}
+		var desenhaCirculo = function(evento){
+			var x = evento.pageX-tela.offsetLeft;
+			var y = evento.pageY-tela.offsetTop;
+			t.fillStyle=corEscolhida;
+			t.beginPath();
+			t.arc(x,y,10,0,2*Math.PI);
+			t.fill();
+			console.log("posicao do clique :"+x+","+y);
+		}
+		tela.onmousemove = desenhaCirculo;
+	</script>
+</body>
+</html>
+
+<!-- https://groups.google.com/group/comece-a-programar/ -->
