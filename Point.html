@@ -1,0 +1,78 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Meu primeiro programa</title>
+	<style>
+		canvas{
+			display: inline-block;
+			margin: 20px;
+			border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="tela" width="600" height="400"></canvas>
+	<canvas id="outro" width="600" height="400"></canvas>
+	<script>
+		var tela = document.getElementById("tela");
+		var t = tela.getContext("2d");
+		t.fillStyle="gray";
+		t.fillRect(0,0,600,400);
+		tela.onclick = function(evento){
+			var x = evento.pageX-tela.offsetLeft;
+			var y = evento.pageY-tela.offsetTop;
+			t.fillStyle="blue";
+			t.beginPath();
+			t.arc(x,y,10,0,2*Math.PI);
+			t.fill();
+			console.log("posicao do clique :"+x+","+y);
+		}
+		var telaTwo = document.getElementById("outro");
+		var two = telaTwo.getContext("2d");
+		two.fillStyle = "gray";
+		two.fillRect(0,0,600,400);
+		telaTwo.addEventListener("mousedown",function(evento){
+			var x = evento.pageX - telaTwo.offsetLeft;
+			var y = evento.pageY - telaTwo.offsetTop;
+			telaTwo.addEventListener("mousedown",function(evento){
+				if(evento.button === 0){
+					two.fillStyle="blue";
+				}
+				else if(evento.button === 2){
+					two.fillStyle="red";
+				}
+				two.beginPath();
+				two.arc(x,y,10,0,2*Math.PI);
+				two.fill();
+				console.log("posicao do clique :"+x+","+y);
+			});
+		});
+		//o mouse ficar permanente 
+		var desenhoCirculo = function(evento){
+			var x = evento.pageX - telaTwo.offsetLeft;
+			var y = evento.pageY - telaTwo.offsetTop;
+			two.fillStyle="yellow";
+			two.beginPath();
+			two.arc(x,y,10,0,2*Math.PI);
+			two.fill();
+			console.log("posicao do mouse"+x+","+y);
+		};
+		//canva de cima 
+		var desenhoCirculo_2 = function(evento){
+			var x = evento.pageX - tela.offsetLeft;
+			var y = evento.pageY - tela.offsetTop;
+			t.fillStyle="blue";
+			t.beginPath();
+			t.arc(x,y,10,0,2*Math.PI);
+			t.fill();
+			console.log("posicao do mouse"+x+","+y);
+		};
+		telaTwo.onmousemove = desenhoCirculo;
+		tela.onmousemove = desenhoCirculo_2;
+	</script>
+</body>
+</html>
+
+<!-- https://groups.google.com/group/comece-a-programar/ -->
