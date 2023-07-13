@@ -1,0 +1,62 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Meu primeiro programa</title>
+	<style>
+		canvas{
+			display: inline-block;
+			margin: 20px;
+			border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="tela" width="600" height="400"></canvas>
+	<script>
+		var tela = document.getElementById("tela");
+		var t = tela.getContext("2d");
+		t.fillStyle="white";//cor verde
+		t.fillRect(0,0,200,400);//largura 400 e altura 200
+		//circulo
+		/*
+		var circulo = function(x,y,raio){
+			//t.fillStyle="blue";
+			t.strokeStyle="blue";
+			t.beginPath();
+			t.arc(x,y,raio,0,2*Math.PI);
+			t.stroke();
+			//t.fill();
+		}
+		*/
+		//function para limpar a tela
+		/*var limpaTela = function(){
+			t.clearRect(0,0,600,400);
+		}
+		*/
+		//imagem de rolagem 
+		var imagem = new Image();
+		imagem.src = "https://th.bing.com/th/id/OIP.vh4GnVy5fXY63gqRsY5GBQHaEK?pid=ImgDet&rs=1";
+		var desenhaImagem = function(x,y){
+			t.imageSmoothingEnabled  = false;
+			t.drawImage(imagem,x,y);
+		}
+		//funcao que chama apenas uma vez e depois limpa com 
+		//a funcao limpaTela()
+		var x =1;
+		var desenha=function(){
+			//limpaTela();//removido
+			t.clearRect(0,0,tela.width,tela.height);//limpa
+			//os rastros
+			desenhaImagem(x,100);
+			//circulo(x,100,x/2);
+			//circulo(x,100,x/2);
+			x=x+1;
+		}
+		setInterval(desenha,500);
+	</script>
+</body>
+</html>
+
+<!-- https://groups.google.com/group/comece-a-programar/ -->
