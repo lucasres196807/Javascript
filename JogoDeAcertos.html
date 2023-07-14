@@ -1,0 +1,77 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Meu primeiro programa</title>
+	<style>
+		canvas{
+			display: inline-block;
+			margin: 20px;
+			border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="tela" width="600" height="400"></canvas>
+	<script>
+		var tela = document.getElementById("tela");
+		var t = tela.getContext("2d");
+		//funcao de sorteio
+		var sorteia = function(max){
+			return Math.floor(Math.random() * max);
+		}
+		//funcao de limpeza de tela 
+		var limpa = function(){
+			t.clearRect(0,0,tela.width,tela.height);		
+		}
+		var circulo = function(x,y,raio){
+			t.fillStyle="blue";
+			t.beginPath();
+			t.arc(x,y,raio,0,2*Math.PI);
+			t.fill();
+		}
+		/*=========DESENHA FUNCTION =====*/
+		var desenhaAlvo = function(x,y){
+			var raio = 40;
+			t.fillStyle="white"
+			circulo(x,y,raio);
+			t.fillStyle="red";
+			circulo(x,y,raio-10);
+			t.fillStyle="white";
+			circulo(x,y,raio-20);
+			t.fillStyle="red";
+			circulo(x,y,raio-30);
+		}
+		var alvoX;
+		var alvoY;
+		var pontos =0;
+		var desenha = function(){
+			limpa();
+			alvoX = sorteia(600);
+			alvoY = sorteia(400);
+			desenhaAlvo(alvoX,alvoY);
+			t.fillStyle="black";
+			t.font = "20px Arial";
+			t.fillText("Pontuação"+pontos,10,30);
+		}
+		/*========DESENHA FUNCTION =======*/
+		//funcao para captura de evento 
+		var capturarClique = function(evento){
+			var clickX = evento.offsetX;
+			var clickY = evento.offsetY;
+			 var distancia = Math.sqrt(Math.pow(clickX - alvoX,2)+ Math.pow(clickY - alvoY ,2));
+			 if(distancia <= 40){
+			 	//O usuário acertou o alvo!
+			 	//Atualize o placar ou faça qualquer outra ação desejada
+			 	pontos++;
+			 	console.log("Acertou o alvo!"+pontos);
+			 }
+		}
+		tela.addEventListener("click",capturarClique);
+		setInterval(desenha,capturarClique);
+	</script>
+</body>
+</html>
+
+<!-- https://groups.google.com/group/comece-a-programar/ -->
