@@ -1,0 +1,135 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Meu primeiro programa</title>
+	<style>
+		canvas{
+			display: inline-block;
+			margin: 20px;
+			border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="tela" width="600" height="400"></canvas>
+	<!--function cubica -->
+	<canvas id="tela1" width="600" height="400"></canvas>
+	<!-- function tangente -->
+	<canvas id="tela2" width="600" height="400"></canvas>
+	<!--logarítimica no canvas -->
+	<canvas id="tela3" width="600" height="400"></canvas>
+	<!--exponecial -->
+	<canvas id="tela4" width="600" height="400"></canvas>
+	<script>
+		var telaFunction = function(){
+		var tela = document.getElementById("tela");
+		var t = tela.getContext("2d");
+		t.fillStyle="blue";
+		var funcaoQuadratica = function(x){return 0.01 * x*x;}
+		var desenhaFuncao = function(funcaoMatematica){
+			for(var i =0; i < 600; i++){
+				var y = funcaoMatematica(i);
+				console.log("Para x = "+i+", o vale "+y);
+				t.beginPath();
+				t.arc(i, 400- y, 2,0,2*Math.PI);
+				t.fill();
+			}
+		}
+		//para seno
+		var funcaoSeno = function(x){
+			return Math.sin(x/20) * 100 + 200;
+		}
+		desenhaFuncao(funcaoSeno);
+	}
+	//function cubica no canvas
+	var telaFunction1 = function(){
+		var tela = document.getElementById("tela1");
+		var t = tela.getContext("2d");
+		t.fillStyle="red";
+		var funcaoQuadratica= function(x){return 0.01*x*x;}
+		var desenhaFuncao = function(funcaoMatematica){
+			for(var i=0;i<600;i++){
+				var y = funcaoMatematica(i);
+				t.beginPath();
+				t.arc(i,400-y,2,0,2*Math.PI);
+				t.fill();
+			}
+		}
+		//cubia 
+		var funcaoCubica = function(x){
+			return 0.0005 *Math.pow(x-tela.width/2,3)+tela.height/2;
+		}
+		desenhaFuncao(funcaoCubica);
+	}
+	//function tangente no canvas
+	var telaFunction2 = function(){
+		var tela = document.getElementById("tela2");
+		var t = tela.getContext("2d");
+		t.fillStyle="gray";
+		var funcaoQuadratica=function(x){return 0.01 * Math.pow(x,x);}
+		var desenhaFuncao = function(tangente){
+			for(var i =0; i<600;i++){
+				var y = tangente(i);
+				t.beginPath();
+				t.arc(i,400-y,2,0,2*Math.PI);
+				t.fill();
+			}
+		}
+		//tangente 
+		var functionTangente = function(x){
+			return Math.tan((x-tela.width/2)/100) * 50 + tela.height/2;
+		}
+		desenhaFuncao(functionTangente);
+	}
+	//function logarítimca no canvas 
+	var telaFunction3 = function(){
+		var tela = document.getElementById("tela3");
+		var t = tela.getContext("2d");
+		t.fillStyle="yellow";
+		var funcaoQuadratica = function(x){return 0.01 *x *x;}
+		var desenhaFuncao = function(log){
+			for(var i=0; i< 600;i++){
+				var y = log(i)
+				t.beginPath();
+				t.arc(i,400-y,2,0,2*Math.PI);
+				t.fill();
+			}
+		}
+		//logarítimca function
+		var functionLog = function(x){
+			return Math.log(x+1)*30 + tela.height /2;
+		}
+		desenhaFuncao(functionLog);
+	}
+	//function exponencial 
+	var telaFunction4 = function(){
+		var tela = document.getElementById("tela4");
+		var t = tela.getContext("2d");
+		t.fillStyle="purple";
+		var funcaoQuadratica=function(x){return 0.01 * Math.pow(x,x);}
+		var desenhaFuncao = function(expon){
+			for(var i =0; i < 600;i++){
+				var y = expon(i);
+				t.beginPath();
+				t.arc(i,400-y,2,0,2*Math.PI);
+				t.fill();
+			}
+		}
+		//function Exponencial
+		var funcaoExponecial = function(x){
+			return Math.exp((x-tela.width/2)/100) *0.1*tela.height;
+		}
+		desenhaFuncao(funcaoExponecial);
+	}
+	telaFunction(); 
+	telaFunction1();
+	telaFunction2();
+	telaFunction3();
+	telaFunction4();
+	</script>
+</body>
+</html>
+
+<!-- https://groups.google.com/group/comece-a-programar/ -->
